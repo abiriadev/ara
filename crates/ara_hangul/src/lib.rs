@@ -20,6 +20,12 @@ impl From<CompleteHangul> for Hangul {
 	fn from(value: CompleteHangul) -> Self { todo!() }
 }
 
+impl TryFrom<char> for Hangul {
+	type Error = ();
+
+	fn try_from(value: char) -> Result<Self, Self::Error> { todo!() }
+}
+
 impl ExtractJamo for Hangul {
 	fn extract_choseong(&self) -> Option<Choseong> { todo!() }
 
@@ -46,6 +52,12 @@ impl From<Jongseong> for Jamo {
 	fn from(value: Jongseong) -> Self { todo!() }
 }
 
+impl TryFrom<char> for Jamo {
+	type Error = ();
+
+	fn try_from(value: char) -> Result<Self, Self::Error> { todo!() }
+}
+
 impl TryFrom<Hangul> for Jamo {
 	type Error = ();
 
@@ -56,6 +68,12 @@ pub struct Choseong(char);
 
 impl Choseong {
 	fn is_choseong(value: char) -> bool { todo!() }
+}
+
+impl TryFrom<char> for Choseong {
+	type Error = ();
+
+	fn try_from(value: char) -> Result<Self, Self::Error> { todo!() }
 }
 
 impl TryFrom<Jamo> for Choseong {
@@ -70,6 +88,12 @@ impl Jungseong {
 	fn is_jungseong(value: char) -> bool { todo!() }
 }
 
+impl TryFrom<char> for Jungseong {
+	type Error = ();
+
+	fn try_from(value: char) -> Result<Self, Self::Error> { todo!() }
+}
+
 impl TryFrom<Jamo> for Jungseong {
 	type Error = ();
 
@@ -80,6 +104,12 @@ pub struct Jongseong(char);
 
 impl Jongseong {
 	fn is_jongseong(value: char) -> bool { todo!() }
+}
+
+impl TryFrom<char> for Jongseong {
+	type Error = ();
+
+	fn try_from(value: char) -> Result<Self, Self::Error> { todo!() }
 }
 
 impl TryFrom<Jamo> for Jongseong {
@@ -94,6 +124,12 @@ impl CompleteHangul {
 	fn is_complete_hangul(value: char) -> bool { todo!() }
 
 	fn disassemble(&self) -> DisassembledHangul { todo!() }
+}
+
+impl TryFrom<char> for CompleteHangul {
+	type Error = ();
+
+	fn try_from(value: char) -> Result<Self, Self::Error> { todo!() }
 }
 
 impl TryFrom<Hangul> for CompleteHangul {
