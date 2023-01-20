@@ -1,12 +1,23 @@
 [workspace]
-members = ["crates/*"]
+	members = ["crates/*"]
 
-[workspace.package]
-authors = ["Abiria <abiria.dev@gmail.com>"]
-edition = "2021"
-description = "Fast yet modern hangul processing library, written in Rust."
-readme = "README.md"
-repository = "https://github.com/abiriadev/ara"
-license = "Apache-2.0"
-keywords = ["hangul", "hangeul", "unicode", "korean", "text"]
-categories = ["text-processing", "localization"]
+	[workspace.package]
+		authors = [
+			"Abiria <abiria.dev@gmail.com>",
+		]
+		categories = [
+			"localization",
+			"text-processing",
+		]
+		description = "Fast yet modern hangul processing library, written in Rust."
+		edition = "2021"
+		keywords = [
+			"hangeul",
+			"hangul",
+			"korean",
+			"text",
+			"unicode",
+		]
+		license = "Apache-2.0"
+		readme = "README.md"
+		repository = "https://github.com/abiriadev/ara"
