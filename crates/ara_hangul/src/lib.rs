@@ -24,13 +24,43 @@ impl From<Jongseong> for Jamo {
 	fn from(value: Jongseong) -> Self { todo!() }
 }
 
+impl TryFrom<Hangul> for Jamo {
+	type Error = ();
+
+	fn try_from(value: Hangul) -> Result<Self, Self::Error> { todo!() }
+}
+
 pub struct Choseong(char);
+
+impl TryFrom<Jamo> for Choseong {
+	type Error = ();
+
+	fn try_from(value: Jamo) -> Result<Self, Self::Error> { todo!() }
+}
 
 pub struct Jungseong(char);
 
+impl TryFrom<Jamo> for Jungseong {
+	type Error = ();
+
+	fn try_from(value: Jamo) -> Result<Self, Self::Error> { todo!() }
+}
+
 pub struct Jongseong(char);
 
+impl TryFrom<Jamo> for Jongseong {
+	type Error = ();
+
+	fn try_from(value: Jamo) -> Result<Self, Self::Error> { todo!() }
+}
+
 pub struct CompleteHangul(char);
+
+impl TryFrom<Hangul> for CompleteHangul {
+	type Error = ();
+
+	fn try_from(value: Hangul) -> Result<Self, Self::Error> { todo!() }
+}
 
 pub struct DisassembledHangul {
 	choseong: Choseong,
