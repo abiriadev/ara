@@ -8,6 +8,10 @@ pub trait ExtractJamo {
 
 pub struct Hangul(char);
 
+impl Hangul {
+	fn is_hangul(value: char) -> bool { todo!() }
+}
+
 impl From<Jamo> for Hangul {
 	fn from(value: Jamo) -> Self { todo!() }
 }
@@ -25,6 +29,10 @@ impl ExtractJamo for Hangul {
 }
 
 pub struct Jamo(char);
+
+impl Jamo {
+	fn is_jamo(value: char) -> bool { todo!() }
+}
 
 impl From<Choseong> for Jamo {
 	fn from(value: Choseong) -> Self { todo!() }
@@ -46,6 +54,10 @@ impl TryFrom<Hangul> for Jamo {
 
 pub struct Choseong(char);
 
+impl Choseong {
+	fn is_choseong(value: char) -> bool { todo!() }
+}
+
 impl TryFrom<Jamo> for Choseong {
 	type Error = ();
 
@@ -53,6 +65,10 @@ impl TryFrom<Jamo> for Choseong {
 }
 
 pub struct Jungseong(char);
+
+impl Jungseong {
+	fn is_jungseong(value: char) -> bool { todo!() }
+}
 
 impl TryFrom<Jamo> for Jungseong {
 	type Error = ();
@@ -62,6 +78,10 @@ impl TryFrom<Jamo> for Jungseong {
 
 pub struct Jongseong(char);
 
+impl Jongseong {
+	fn is_jongseong(value: char) -> bool { todo!() }
+}
+
 impl TryFrom<Jamo> for Jongseong {
 	type Error = ();
 
@@ -69,6 +89,10 @@ impl TryFrom<Jamo> for Jongseong {
 }
 
 pub struct CompleteHangul(char);
+
+impl CompleteHangul {
+	fn is_complete_hangul(value: char) -> bool { todo!() }
+}
 
 impl TryFrom<Hangul> for CompleteHangul {
 	type Error = ();
