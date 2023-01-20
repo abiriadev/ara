@@ -92,6 +92,8 @@ pub struct CompleteHangul(char);
 
 impl CompleteHangul {
 	fn is_complete_hangul(value: char) -> bool { todo!() }
+
+	fn disassemble(&self) -> DisassembledHangul { todo!() }
 }
 
 impl TryFrom<Hangul> for CompleteHangul {
@@ -112,4 +114,8 @@ pub struct DisassembledHangul {
 	choseong: Choseong,
 	junseong: Jungseong,
 	jongseong: Option<Jongseong>,
+}
+
+impl DisassembledHangul {
+	fn assemble(&self) -> CompleteHangul { todo!() }
 }
