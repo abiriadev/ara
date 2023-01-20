@@ -1,5 +1,11 @@
 #![allow(unused)]
 
+pub trait ExtractJamo {
+	fn extract_choseong(&self) -> Option<Choseong>;
+	fn extract_jungseong(&self) -> Option<Jungseong>;
+	fn extract_jongseong(&self) -> Option<Jongseong>;
+}
+
 pub struct Hangul(char);
 
 impl From<Jamo> for Hangul {
@@ -8,6 +14,14 @@ impl From<Jamo> for Hangul {
 
 impl From<CompleteHangul> for Hangul {
 	fn from(value: CompleteHangul) -> Self { todo!() }
+}
+
+impl ExtractJamo for Hangul {
+	fn extract_choseong(&self) -> Option<Choseong> { todo!() }
+
+	fn extract_jungseong(&self) -> Option<Jungseong> { todo!() }
+
+	fn extract_jongseong(&self) -> Option<Jongseong> { todo!() }
 }
 
 pub struct Jamo(char);
@@ -60,6 +74,14 @@ impl TryFrom<Hangul> for CompleteHangul {
 	type Error = ();
 
 	fn try_from(value: Hangul) -> Result<Self, Self::Error> { todo!() }
+}
+
+impl ExtractJamo for CompleteHangul {
+	fn extract_choseong(&self) -> Option<Choseong> { todo!() }
+
+	fn extract_jungseong(&self) -> Option<Jungseong> { todo!() }
+
+	fn extract_jongseong(&self) -> Option<Jongseong> { todo!() }
 }
 
 pub struct DisassembledHangul {
