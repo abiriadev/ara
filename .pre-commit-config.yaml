@@ -22,6 +22,6 @@ repos:
         language: system
         files: \.rs$
         args:
-          - '--'
-          - '--error-on-unformatted'
+          - '-v'
           - '--unstable-features'
+          - '--error-on-unformatted'
