@@ -1,4 +1,9 @@
 #![allow(unused)]
+#![allow(clippy::missing_safety_doc)]
+
+pub trait FromCharUnchecked: TryFrom<char> {
+	unsafe fn from_char_unchecked(value: char) -> Self;
+}
 
 pub trait ExtractJamo {
 	fn extract_choseong(&self) -> Option<Choseong>;
@@ -24,6 +29,10 @@ impl TryFrom<char> for Hangul {
 	type Error = ();
 
 	fn try_from(value: char) -> Result<Self, Self::Error> { todo!() }
+}
+
+impl FromCharUnchecked for Hangul {
+	unsafe fn from_char_unchecked(value: char) -> Self { todo!() }
 }
 
 impl ExtractJamo for Hangul {
@@ -64,6 +73,10 @@ impl TryFrom<Hangul> for Jamo {
 	fn try_from(value: Hangul) -> Result<Self, Self::Error> { todo!() }
 }
 
+impl FromCharUnchecked for Jamo {
+	unsafe fn from_char_unchecked(value: char) -> Self { todo!() }
+}
+
 pub struct Choseong(char);
 
 impl Choseong {
@@ -80,6 +93,10 @@ impl TryFrom<Jamo> for Choseong {
 	type Error = ();
 
 	fn try_from(value: Jamo) -> Result<Self, Self::Error> { todo!() }
+}
+
+impl FromCharUnchecked for Choseong {
+	unsafe fn from_char_unchecked(value: char) -> Self { todo!() }
 }
 
 pub struct Jungseong(char);
@@ -100,6 +117,10 @@ impl TryFrom<Jamo> for Jungseong {
 	fn try_from(value: Jamo) -> Result<Self, Self::Error> { todo!() }
 }
 
+impl FromCharUnchecked for Jungseong {
+	unsafe fn from_char_unchecked(value: char) -> Self { todo!() }
+}
+
 pub struct Jongseong(char);
 
 impl Jongseong {
@@ -116,6 +137,10 @@ impl TryFrom<Jamo> for Jongseong {
 	type Error = ();
 
 	fn try_from(value: Jamo) -> Result<Self, Self::Error> { todo!() }
+}
+
+impl FromCharUnchecked for Jongseong {
+	unsafe fn from_char_unchecked(value: char) -> Self { todo!() }
 }
 
 pub struct CompleteHangul(char);
@@ -136,6 +161,10 @@ impl TryFrom<Hangul> for CompleteHangul {
 	type Error = ();
 
 	fn try_from(value: Hangul) -> Result<Self, Self::Error> { todo!() }
+}
+
+impl FromCharUnchecked for CompleteHangul {
+	unsafe fn from_char_unchecked(value: char) -> Self { todo!() }
 }
 
 impl ExtractJamo for CompleteHangul {
