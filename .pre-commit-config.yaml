@@ -3,16 +3,11 @@ repos:
   - repo: https://github.com/doublify/pre-commit-rust
     rev: v1.0
     hooks:
-      - id: fmt
-        args:
-          - '--'
-          - '--error-on-unformatted'
-          - '--unstable-features'
       - id: cargo-check
       - id: clippy
   - repo: local
     hooks:
-      - id: fmt
+      - id: toml-fmt
         name: Taplo formatting
         entry: taplo format
         description: format all toml files
@@ -20,3 +15,13 @@ repos:
           - '--verbose'
           - '--diff'
         language: system
+      - id: rust-fmt
+        name: Rust formatting
+        description: Format files with rustfmt
+        entry: cargo +nightly fmt --
+        language: system
+        files: \.rs$
+        args:
+          - '--'
+          - '--error-on-unformatted'
+          - '--unstable-features'
