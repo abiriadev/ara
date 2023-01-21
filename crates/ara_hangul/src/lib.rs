@@ -11,6 +11,16 @@ pub trait ExtractJamo {
 	fn extract_jongseong(&self) -> Option<Jongseong>;
 }
 
+pub trait ExtractJamoFromIterator {
+	type ChoseongIter: Iterator<Item = Choseong>;
+	type JungseongIter: Iterator<Item = Jungseong>;
+	type JongseongIter: Iterator<Item = Jongseong>;
+
+	fn extract_choseong(&self) -> Self::ChoseongIter;
+	fn extract_jungseong(&self) -> Self::JungseongIter;
+	fn extract_jongseong(&self) -> Self::JongseongIter;
+}
+
 pub trait DisassembleIter {
 	type Iter: Iterator<Item = Jamo>;
 
@@ -245,6 +255,42 @@ impl From<DisassembledHangul> for (Choseong, Jungseong, Jongseong) {
 
 impl From<DisassembledHangul> for [Jamo; 3] {
 	fn from(value: DisassembledHangul) -> Self { todo!() }
+}
+
+pub struct ChoseongSequence;
+
+impl Iterator for ChoseongSequence {
+	type Item = Choseong;
+
+	fn next(&mut self) -> Option<Self::Item> { todo!() }
+}
+
+pub struct JungseongSequence;
+
+impl Iterator for JungseongSequence {
+	type Item = Jungseong;
+
+	fn next(&mut self) -> Option<Self::Item> { todo!() }
+}
+
+pub struct JongseongSequence;
+
+impl Iterator for JongseongSequence {
+	type Item = Jongseong;
+
+	fn next(&mut self) -> Option<Self::Item> { todo!() }
+}
+
+impl ExtractJamoFromIterator for String {
+	type ChoseongIter = ChoseongSequence;
+	type JongseongIter = JongseongSequence;
+	type JungseongIter = JungseongSequence;
+
+	fn extract_choseong(&self) -> Self::ChoseongIter { todo!() }
+
+	fn extract_jungseong(&self) -> Self::JungseongIter { todo!() }
+
+	fn extract_jongseong(&self) -> Self::JongseongIter { todo!() }
 }
 
 pub struct JamoSequence;
