@@ -14,6 +14,7 @@ mod is_hangul {
 		assert!(!Hangul::is_hangul('A'));
 	}
 
+	#[test]
 	fn must_include_complete_hangul() {
 		assert!(Hangul::is_hangul('가'));
 		assert!(Hangul::is_hangul('각'));
@@ -21,16 +22,21 @@ mod is_hangul {
 		assert!(Hangul::is_hangul('힣'));
 	}
 
+	#[test]
 	fn must_include_partial_characters() {
 		assert!(Hangul::is_hangul('ㄱ'));
 		assert!(Hangul::is_hangul('ㅏ'));
 		assert!(Hangul::is_hangul('ㄿ'));
 	}
 
+	#[test]
 	fn must_ignore_old_hangul_characters() {
 		assert!(!Hangul::is_hangul('ㅹ'));
 		assert!(!Hangul::is_hangul('ᄭ'));
 	}
 
-	fn must_ignore_hcf() { assert!(!Hangul::is_hangul('\u{115F}')) }
+	#[test]
+	fn must_ignore_hcf() {
+		assert!(!Hangul::is_hangul('\u{115F}'));
+	}
 }
