@@ -281,7 +281,7 @@ impl Iterator for JongseongSequence {
 	fn next(&mut self) -> Option<Self::Item> { todo!() }
 }
 
-impl ExtractJamoFromIterator for String {
+impl ExtractJamoFromIterator for Vec<Hangul> {
 	type ChoseongIter = ChoseongSequence;
 	type JongseongIter = JongseongSequence;
 	type JungseongIter = JungseongSequence;
