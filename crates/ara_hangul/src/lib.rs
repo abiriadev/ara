@@ -11,10 +11,24 @@ pub trait ExtractJamo {
 	fn extract_jongseong(&self) -> Option<Jongseong>;
 }
 
-pub trait Disassemble {
-	type Output;
+pub trait DisassembleIter {
+	type Iter: Iterator<Item = Jamo>;
 
-	fn disassemble(&self) -> Self::Output;
+	fn disassemble_iter(&self) -> Self::Iter;
+}
+
+pub trait Disassemble: DisassembleIter {
+	fn disassemble<T>(&self) -> T
+	where T: FromIterator<Jamo>;
+}
+
+impl<T> Disassemble for T
+where T: DisassembleIter
+{
+	fn disassemble<V>(&self) -> V
+	where V: FromIterator<Jamo> {
+		self.disassemble_iter().collect()
+	}
 }
 
 pub trait Assemble {
@@ -219,16 +233,24 @@ impl From<DisassembledHangul> for [Jamo; 3] {
 	fn from(value: DisassembledHangul) -> Self { todo!() }
 }
 
-impl Disassemble for String {
-	type Output = Vec<Jamo>;
+pub struct JamoSequence;
 
-	fn disassemble(&self) -> Self::Output { todo!() }
+impl Iterator for JamoSequence {
+	type Item = Jamo;
+
+	fn next(&mut self) -> Option<Self::Item> { todo!() }
 }
 
-impl Disassemble for Vec<char> {
-	type Output = Vec<Jamo>;
+impl DisassembleIter for String {
+	type Iter = JamoSequence;
 
-	fn disassemble(&self) -> Self::Output { todo!() }
+	fn disassemble_iter(&self) -> Self::Iter { todo!() }
+}
+
+impl DisassembleIter for Vec<char> {
+	type Iter = JamoSequence;
+
+	fn disassemble_iter(&self) -> Self::Iter { todo!() }
 }
 
 impl Assemble for Vec<char> {
@@ -237,10 +259,10 @@ impl Assemble for Vec<char> {
 	fn assemble(&self) -> Self::Output { todo!() }
 }
 
-impl Disassemble for Vec<Hangul> {
-	type Output = Vec<Jamo>;
+impl DisassembleIter for Vec<Hangul> {
+	type Iter = JamoSequence;
 
-	fn disassemble(&self) -> Self::Output { todo!() }
+	fn disassemble_iter(&self) -> Self::Iter { todo!() }
 }
 
 impl Assemble for Vec<Hangul> {
@@ -249,21 +271,14 @@ impl Assemble for Vec<Hangul> {
 	fn assemble(&self) -> Self::Output { todo!() }
 }
 
-impl Disassemble for Vec<CompleteHangul> {
-	type Output = Vec<Jamo>;
+impl DisassembleIter for Vec<CompleteHangul> {
+	type Iter = JamoSequence;
 
-	fn disassemble(&self) -> Self::Output { todo!() }
+	fn disassemble_iter(&self) -> Self::Iter { todo!() }
 }
 
 impl Assemble for Vec<Jamo> {
 	type Output = Vec<Hangul>;
 
 	fn assemble(&self) -> Self::Output { todo!() }
-}
-pub struct JamoSequence;
-
-impl Iterator for JamoSequence {
-	type Item = Jamo;
-
-	fn next(&mut self) -> Option<Self::Item> { todo!() }
 }
