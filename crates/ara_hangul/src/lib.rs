@@ -11,6 +11,18 @@ pub trait ExtractJamo {
 	fn extract_jongseong(&self) -> Option<Jongseong>;
 }
 
+pub trait Disassemble {
+	type Output;
+
+	fn disassemble(&self) -> Self::Output;
+}
+
+pub trait Assemble {
+	type Output;
+
+	fn assemble(&self) -> Self::Output;
+}
+
 pub struct Hangul(char);
 
 impl Hangul {
