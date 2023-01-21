@@ -218,3 +218,27 @@ impl From<DisassembledHangul> for (Choseong, Jungseong, Jongseong) {
 impl From<DisassembledHangul> for [Jamo; 3] {
 	fn from(value: DisassembledHangul) -> Self { todo!() }
 }
+
+impl Disassemble for String {
+	type Output = Vec<Jamo>;
+
+	fn disassemble(&self) -> Self::Output { todo!() }
+}
+
+impl Disassemble for Vec<char> {
+	type Output = Vec<Jamo>;
+
+	fn disassemble(&self) -> Self::Output { todo!() }
+}
+
+impl Disassemble for Vec<Hangul> {
+	type Output = Vec<Jamo>;
+
+	fn disassemble(&self) -> Self::Output { todo!() }
+}
+
+impl Disassemble for Vec<CompleteHangul> {
+	type Output = Vec<Jamo>;
+
+	fn disassemble(&self) -> Self::Output { todo!() }
+}
