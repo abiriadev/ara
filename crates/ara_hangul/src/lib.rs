@@ -260,3 +260,10 @@ impl Assemble for Vec<Jamo> {
 
 	fn assemble(&self) -> Self::Output { todo!() }
 }
+pub struct JamoSequence;
+
+impl Iterator for JamoSequence {
+	type Item = Jamo;
+
+	fn next(&mut self) -> Option<Self::Item> { todo!() }
+}
