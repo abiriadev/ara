@@ -64,7 +64,7 @@ where T: AssembleIterator
 pub struct Hangul(char);
 
 impl Hangul {
-	fn is_hangul(value: char) -> bool { todo!() }
+	pub fn is_hangul(value: char) -> bool { todo!() }
 }
 
 impl From<Jamo> for Hangul {
@@ -96,7 +96,7 @@ impl ExtractJamo for Hangul {
 pub struct Jamo(char);
 
 impl Jamo {
-	fn is_jamo(value: char) -> bool { todo!() }
+	pub fn is_jamo(value: char) -> bool { todo!() }
 }
 
 impl From<Choseong> for Jamo {
@@ -130,7 +130,7 @@ impl FromCharUnchecked for Jamo {
 pub struct Choseong(char);
 
 impl Choseong {
-	fn is_choseong(value: char) -> bool { todo!() }
+	pub fn is_choseong(value: char) -> bool { todo!() }
 }
 
 impl TryFrom<char> for Choseong {
@@ -152,7 +152,7 @@ impl FromCharUnchecked for Choseong {
 pub struct Jungseong(char);
 
 impl Jungseong {
-	fn is_jungseong(value: char) -> bool { todo!() }
+	pub fn is_jungseong(value: char) -> bool { todo!() }
 }
 
 impl TryFrom<char> for Jungseong {
@@ -174,7 +174,7 @@ impl FromCharUnchecked for Jungseong {
 pub struct Jongseong(char);
 
 impl Jongseong {
-	fn is_jongseong(value: char) -> bool { todo!() }
+	pub fn is_jongseong(value: char) -> bool { todo!() }
 }
 
 impl TryFrom<char> for Jongseong {
@@ -196,9 +196,9 @@ impl FromCharUnchecked for Jongseong {
 pub struct CompleteHangul(char);
 
 impl CompleteHangul {
-	fn is_complete_hangul(value: char) -> bool { todo!() }
+	pub fn is_complete_hangul(value: char) -> bool { todo!() }
 
-	fn disassemble(&self) -> DisassembledHangul { todo!() }
+	pub fn disassemble(&self) -> DisassembledHangul { todo!() }
 }
 
 impl TryFrom<char> for CompleteHangul {
@@ -232,7 +232,7 @@ pub struct DisassembledHangul {
 }
 
 impl DisassembledHangul {
-	fn assemble(&self) -> CompleteHangul { todo!() }
+	pub fn assemble(&self) -> CompleteHangul { todo!() }
 }
 
 impl From<(Choseong, Jungseong, Jongseong)> for DisassembledHangul {
