@@ -231,14 +231,32 @@ impl Disassemble for Vec<char> {
 	fn disassemble(&self) -> Self::Output { todo!() }
 }
 
+impl Assemble for Vec<char> {
+	type Output = Vec<char>;
+
+	fn assemble(&self) -> Self::Output { todo!() }
+}
+
 impl Disassemble for Vec<Hangul> {
 	type Output = Vec<Jamo>;
 
 	fn disassemble(&self) -> Self::Output { todo!() }
 }
 
+impl Assemble for Vec<Hangul> {
+	type Output = Vec<Hangul>;
+
+	fn assemble(&self) -> Self::Output { todo!() }
+}
+
 impl Disassemble for Vec<CompleteHangul> {
 	type Output = Vec<Jamo>;
 
 	fn disassemble(&self) -> Self::Output { todo!() }
+}
+
+impl Assemble for Vec<Jamo> {
+	type Output = Vec<Hangul>;
+
+	fn assemble(&self) -> Self::Output { todo!() }
 }
