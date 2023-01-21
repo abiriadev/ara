@@ -31,10 +31,24 @@ where T: DisassembleIter
 	}
 }
 
-pub trait Assemble {
-	type Output;
+pub trait AssembleIterator {
+	type Iter: Iterator<Item = Hangul>;
 
-	fn assemble(&self) -> Self::Output;
+	fn assemble_iter(&self) -> Self::Iter;
+}
+
+pub trait Assemble: AssembleIterator {
+	fn assemble<T>(&self) -> T
+	where T: FromIterator<Hangul>;
+}
+
+impl<T> Assemble for T
+where T: AssembleIterator
+{
+	fn assemble<V>(&self) -> V
+	where V: FromIterator<Hangul> {
+		self.assemble_iter().collect()
+	}
 }
 
 pub struct Hangul(char);
@@ -261,10 +275,10 @@ impl DisassembleIter for Vec<char> {
 	fn disassemble_iter(&self) -> Self::Iter { todo!() }
 }
 
-impl Assemble for Vec<char> {
-	type Output = Vec<char>;
+impl AssembleIterator for Vec<char> {
+	type Iter = HangulSequence;
 
-	fn assemble(&self) -> Self::Output { todo!() }
+	fn assemble_iter(&self) -> Self::Iter { todo!() }
 }
 
 impl DisassembleIter for Vec<Hangul> {
@@ -273,10 +287,10 @@ impl DisassembleIter for Vec<Hangul> {
 	fn disassemble_iter(&self) -> Self::Iter { todo!() }
 }
 
-impl Assemble for Vec<Hangul> {
-	type Output = Vec<Hangul>;
+impl AssembleIterator for Vec<Hangul> {
+	type Iter = HangulSequence;
 
-	fn assemble(&self) -> Self::Output { todo!() }
+	fn assemble_iter(&self) -> Self::Iter { todo!() }
 }
 
 impl DisassembleIter for Vec<CompleteHangul> {
@@ -285,8 +299,8 @@ impl DisassembleIter for Vec<CompleteHangul> {
 	fn disassemble_iter(&self) -> Self::Iter { todo!() }
 }
 
-impl Assemble for Vec<Jamo> {
-	type Output = Vec<Hangul>;
+impl AssembleIterator for Vec<Jamo> {
+	type Iter = HangulSequence;
 
-	fn assemble(&self) -> Self::Output { todo!() }
+	fn assemble_iter(&self) -> Self::Iter { todo!() }
 }
