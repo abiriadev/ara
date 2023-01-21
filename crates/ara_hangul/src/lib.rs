@@ -241,6 +241,14 @@ impl Iterator for JamoSequence {
 	fn next(&mut self) -> Option<Self::Item> { todo!() }
 }
 
+pub struct HangulSequence;
+
+impl Iterator for HangulSequence {
+	type Item = Hangul;
+
+	fn next(&mut self) -> Option<Self::Item> { todo!() }
+}
+
 impl DisassembleIter for String {
 	type Iter = JamoSequence;
 
