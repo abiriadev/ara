@@ -91,4 +91,13 @@ mod check_functions {
 			assert!(!Choseong::is_choseong('ㄵ'))
 		}
 	}
+
+	mod is_jungseong {
+		use super::*;
+
+		#[test]
+		fn all_vowels_must_to_be_a_valid_jungseong() {
+			assert!(Jungseong::is_jungseong('ㅖ'))
+		}
+	}
 }
