@@ -1,0 +1,115 @@
+# This is a configuration file for the bacon tool
+# More info at https://github.com/Canop/bacon
+
+default_job = "check"
+
+[jobs]
+
+	[jobs.check]
+		command = [
+			"--color",
+			"always",
+			"cargo",
+			"check",
+		]
+		need_stdout = false
+
+	[jobs.check-all]
+		command = [
+			"--all-targets",
+			"--color",
+			"always",
+			"cargo",
+			"check",
+		]
+		need_stdout = false
+		watch = [
+			"benches",
+			"examples",
+			"tests",
+		]
+
+	[jobs.clippy]
+		command = [
+			"--color",
+			"always",
+			"cargo",
+			"clippy",
+		]
+		need_stdout = false
+
+	[jobs.clippy-all]
+		command = [
+			"--all-targets",
+			"--color",
+			"always",
+			"cargo",
+			"clippy",
+		]
+		need_stdout = false
+		watch = [
+			"benches",
+			"examples",
+			"tests",
+		]
+
+	[jobs.test]
+		command = [
+			"--color",
+			"--nocapture",
+			"always",
+			"cargo",
+			"test",
+		]
+		need_stdout = true
+		watch = ["tests"]
+
+	[jobs.doc]
+		command = [
+			"--color",
+			"--no-deps",
+			"always",
+			"cargo",
+			"doc",
+		]
+		need_stdout = false
+
+	# if the doc compiles, then it opens in your browser and bacon switches
+	# to the previous job
+	[jobs.doc-open]
+		command = [
+			"--color",
+			"--no-deps",
+			"--open",
+			"always",
+			"cargo",
+			"doc",
+		]
+		need_stdout = false
+		on_success = "back" # so that we don't open the browser at each change
+
+	# You can run your application and have the result displayed in bacon,
+	# *if* it makes sense for this crate. You can run an example the same
+	# way. Don't forget the `--color always` part or the errors won't be
+	# properly parsed.
+	[jobs.run]
+		allow_warnings = true
+		command = [
+			"--color",
+			"always",
+			"cargo",
+			"run",
+		]
+		need_stdout = true
+
+# You may define here keybindings that would be specific to
+# a project, for example a shortcut to launch a specific job.
+# Shortcuts to internal functions (scrolling, toggling, etc.)
+# should go in your personal prefs.toml file instead.
+[keybindings]
+	a = "job:check-all"
+	c = "job:clippy"
+	d = "job:doc-open"
+	i = "job:initial"
+	r = "job:run"
+	t = "job:test"
