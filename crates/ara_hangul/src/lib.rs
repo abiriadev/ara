@@ -198,3 +198,11 @@ impl TryFrom<[Jamo; 3]> for DisassembledHangul {
 
 	fn try_from(value: [Jamo; 3]) -> Result<Self, Self::Error> { todo!() }
 }
+
+impl From<DisassembledHangul> for (Choseong, Jungseong, Jongseong) {
+	fn from(value: DisassembledHangul) -> Self { todo!() }
+}
+
+impl From<DisassembledHangul> for [Jamo; 3] {
+	fn from(value: DisassembledHangul) -> Self { todo!() }
+}
