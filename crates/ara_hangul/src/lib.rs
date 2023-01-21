@@ -184,3 +184,17 @@ pub struct DisassembledHangul {
 impl DisassembledHangul {
 	fn assemble(&self) -> CompleteHangul { todo!() }
 }
+
+impl From<(Choseong, Jungseong, Jongseong)> for DisassembledHangul {
+	fn from(value: (Choseong, Jungseong, Jongseong)) -> Self { todo!() }
+}
+
+impl From<(Choseong, Jungseong, Option<Jongseong>)> for DisassembledHangul {
+	fn from(value: (Choseong, Jungseong, Option<Jongseong>)) -> Self { todo!() }
+}
+
+impl TryFrom<[Jamo; 3]> for DisassembledHangul {
+	type Error = ();
+
+	fn try_from(value: [Jamo; 3]) -> Result<Self, Self::Error> { todo!() }
+}
