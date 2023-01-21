@@ -72,4 +72,23 @@ mod check_functions {
 			assert!(Jamo::is_jamo('ㅞ'));
 		}
 	}
+
+	mod is_choseong {
+		use super::*;
+
+		#[test]
+		fn must_include_consonants() {
+			assert!(Choseong::is_choseong('ㄴ'));
+		}
+
+		#[test]
+		fn must_include_double_consonants() {
+			assert!(Choseong::is_choseong('ㅆ'));
+		}
+
+		#[test]
+		fn must_not_include_double_final_consonants() {
+			assert!(!Choseong::is_choseong('ㄵ'))
+		}
+	}
 }
